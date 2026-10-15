@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="id">Buscar por Id:</label>
+    <input type="number" name="id" id="buscar" placeholder="Buscar por ID">
+    <button onclick="BuscarCliente()">Buscar</button>
+    <br><br>
+        <div class=" contenedor">
+        <table>
+            <caption>
+                Tabla Clientes
+            </caption>
+            <br>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Pedido</th>
+                    <th>NIT</th>
+                    <th>Area
+                        <select id="selector">
+                            <option value="---">-----</option>
+                            <option value="Comercial">Comercial</option>
+                            <option value="Logística" selected>Logística</option>
+                            <option value="Servicio al Cliente">Servicio al Cliente</option>
+                            <option value="Facturación">Facturación</option>
+                        </select>
+                    </th>
+                    <th>Estado</th>
+                    <th>Ciudad</th>
+                    <th>Fecha Pedido</th>
+                    <th>Valor Total</th>
+                    <th>Prioridad</th>
+                </tr>
+            </thead>
+            <tbody id="tabla">
+                <!-- Datos -->
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        </div>
+
+        <br>
+        <button><a href="./Index.html">Volver</a></button>
+        <button onclick="fetchClientes()">Reset</button>
+        <script src="Clientes.js"></script>
+</body>
+
+</html>

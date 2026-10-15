@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "Pedido": "PED-2026-0001",
+      "NitCliente": "48589340",
+      "Area": "Comercial",
+      "Estado": "Pendiente",
+      "Ciudad": "Bogotá",
+      "FechaPedido": "2026-10-01",
+      "ValorTotal": 1250000,
+      "Prioridad": "Alta"
+    },
+    {
+      "id": 2,
+      "Pedido": "PED-2026-0002",
+      "NitCliente": "123432",
+      "Area": "Logística",
+      "Estado": "En proceso",
+      "Ciudad": "Medellín",
+      "FechaPedido": "2026-10-02",
+      "ValorTotal": 875000,
+      "Prioridad": "Media"
+    },
+    {
+      "id": 3,
+      "Pedido": "PED-2026-0003",
+      "NitCliente": "75532121",
+      "Area": "Servicio al Cliente",
+      "Estado": "Entregado",
+      "Ciudad": "Cali",
+      "FechaPedido": "2026-10-03",
+      "ValorTotal": 2140000,
+      "Prioridad": "Baja"
+    },
+    {
+      "id": 4,
+      "Pedido": "PED-2026-0004",
+      "NitCliente": "48589340",
+      "Area": "Comercial",
+      "Estado": "En proceso",
+      "Ciudad": "Barranquilla",
+      "FechaPedido": "2026-10-04",
+      "ValorTotal": 560000,
+      "Prioridad": "Media"
+    },
+    {
+      "id": 5,
+      "Pedido": "PED-2026-0005",
+      "NitCliente": "123432",
+      "Area": "Facturación",
+      "Estado": "Facturado",
+      "Ciudad": "Bogotá",
+      "FechaPedido": "2026-10-05",
+      "ValorTotal": 3200000,
+      "Prioridad": "Alta"
+    },
+    {
+      "id": 6,
+      "Pedido": "PED-2026-0006",
+      "NitCliente": "75532121",
+      "Area": "Logística",
+      "Estado": "Pendiente",
+      "Ciudad": "Cartagena",
+      "FechaPedido": "2026-10-06",
+      "ValorTotal": 1450000,
+      "Prioridad": "Alta"
+    },
+    {
+      "id": 7,
+      "Pedido": "PED-2026-0007",
+      "NitCliente": "48589340",
+      "Area": "Servicio al Cliente",
+      "Estado": "Entregado",
+      "Ciudad": "Bucaramanga",
+      "FechaPedido": "2026-10-06",
+      "ValorTotal": 925000,
+      "Prioridad": "Baja"
+    },
+    {
+      "id": 8,
+      "Pedido": "PED-2026-0008",
+      "NitCliente": "123432",
+      "Area": "Comercial",
+      "Estado": "Cancelado",
+      "Ciudad": "Pereira",
+      "FechaPedido": "2026-10-07",
+      "ValorTotal": 680000,
+      "Prioridad": "Baja"
+    },
+    {
+      "id": 9,
+      "Pedido": "PED-2026-0009",
+      "NitCliente": "75532121",
+      "Area": "Facturación",
+      "Estado": "En proceso",
+      "Ciudad": "Bogotá",
+      "FechaPedido": "2026-10-07",
+      "ValorTotal": 1875000,
+      "Prioridad": "Media"
+    },
+    {
+      "id": 10,
+      "Pedido": "PED-2026-0010",
+      "NitCliente": "48589340",
+      "Area": "Logística",
+      "Estado": "Pendiente",
+      "Ciudad": "Manizales",
+      "FechaPedido": "2026-10-08",
+      "ValorTotal": 2340000,
+      "Prioridad": "Alta"
+    },
+    {
+      "id": 11,
+      "Pedido": "PED-2026-0011",
+      "NitCliente": "123432",
+      "Area": "Comercial",
+      "Estado": "Entregado",
+      "Ciudad": "Cali",
+      "FechaPedido": "2026-10-08",
+      "ValorTotal": 1120000,
+      "Prioridad": "Media"
+    },
+    {
+      "id": 12,
+      "Pedido": "PED-2026-0012",
+      "NitCliente": "75532121",
+      "Area": "Servicio al Cliente",
+      "Estado": "Pendiente",
+      "Ciudad": "Medellín",
+      "FechaPedido": "2026-10-08",
+      "ValorTotal": 795000,
+      "Prioridad": "Baja"
+    }
+  ]
+}

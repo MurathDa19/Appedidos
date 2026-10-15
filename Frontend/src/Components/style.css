@@ -1,0 +1,61 @@
+
+#saludo {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: greenyellow;
+    border: 2px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140, 140, 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-weight: bold;
+}
+
+thead,
+tfoot {
+    background-color: rgb(228, 240, 245);
+}
+
+/* Aplicar estilos a todas las celdas */
+th,
+td {
+    border: 1px solid rgb(160, 160, 160);
+    padding: 8px 10px;
+}
+
+/* Centrar la última columna */
+td:last-child {
+    text-align: center;
+}
+
+/* Aplicar fondo alterno a todas las filas del cuerpo */
+tbody tr:nth-child(even) {
+    background-color: rgb(237, 238, 242);
+}
+
+/* Asegurar que todas las filas del cuerpo tengan un estilo */
+tbody tr {
+    border-bottom: 1px solid rgb(160, 160, 160);
+}
+
+tfoot th {
+    text-align: right;
+}
+
+tfoot td {
+    font-weight: bold;
+}
