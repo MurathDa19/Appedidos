@@ -34,7 +34,11 @@ const GetPedidoPorId = (req, res) => {
             message: "Usuario no encontrado."
         })
     }
-    return res.json(Resp);
+    return res.status(200).json({
+        data:[
+            Resp
+        ]
+    });
 };
 
 /**
@@ -55,8 +59,9 @@ const GetPedidosxArea = (req, res) => {
         });
     }
     return res.status(200).json({
-        total: Resp.length,
+        total_encontrado: Resp.length,
         data: Resp
+
     });
 }
 

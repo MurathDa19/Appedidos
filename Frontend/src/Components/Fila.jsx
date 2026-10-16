@@ -1,46 +1,77 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { GetPedidoPorId, GetPedidos, GetPedidosArea } from "./Funciones/Asincronas";
+import { useState, useEffect } from "react";
+import { GetPedidosId, GetPedidos, GetPedidosArea } from "./Funciones/Asincronas";
 
 import './style.css'
 
 function Fila() {
-    const [valor, setValor] = useState(Number)
+    const [valor, setValor] = useState('')
+    const [error, setError] = useState('')
+    const [cargando, setCargando] = useState(true)
+    const [pedidos, setPedidos] = useState([])
+
+    // Función genérica para ejecutar cualquier consulta
+    const cargar = async (consulta) => {
+        setCargando(true)
+        setError('')
+        try {
+            const datos = await consulta()
+            setPedidos(datos.data)
+        } catch (err) {
+            setError(err.message)
+            setPedidos([])
+        } finally {
+            setCargando(false)
+        }
+    }
+
+    // Carga inicial: solo una vez al montar
+    useEffect(() => {
+        cargar(GetPedidos)
+    }, [])
+
+    const handleArea = (area) => {
+        if (area === "---") cargar(GetPedidos)
+        else cargar(() => GetPedidosArea(area))
+    }
+
+    const handleBuscar = () => {
+        if (valor.trim() === '') cargar(GetPedidos)
+        else cargar(() => GetPedidosId(valor))
+    }
 
     return (
         <>
-
             {cargando && <h1>Cargando Pedidos...</h1>}
             {error && <p>Error: {error}</p>}
 
             <label htmlFor="Buscador">Buscar por ID</label>
-            <input 
-                type="text" 
-                id="Buscador" 
+            <input
+                type="text"
+                id="Buscador"
                 placeholder="ID"
-                onChange={(e) => setValor(e)}
+                value={valor}
+                onChange={(e) => setValor(e.target.value)}
             />
 
-            <button onClick={() => GetPedidoPorId(valor)}>
-                Buscar
-            </button>
+            <button onClick={handleBuscar}>Buscar</button>
+
             <table>
-                <caption>
-                    Tabla Clientes
-                </caption>
+                <caption>Tabla Clientes</caption>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Pedido</th>
                         <th>NIT</th>
-                        <th>Area
-                            <select 
-                            id="selector" 
-                            defaultValue="-----"
-                            onChange={(e) => GetPedidosArea(e.target.value)}>
+                        <th>
+                            Area
+                            <select
+                                id="selector"
+                                defaultValue="---"
+                                onChange={(e) => handleArea(e.target.value)}
+                            >
                                 <option value="---">-----</option>
                                 <option value="Comercial">Comercial</option>
-                                <option value="Logística" >Logística</option>
+                                <option value="Logística">Logística</option>
                                 <option value="Servicio al Cliente">Servicio al Cliente</option>
                                 <option value="Facturación">Facturación</option>
                             </select>
@@ -65,15 +96,11 @@ function Fila() {
                             <td>{pedido.ValorTotal}</td>
                             <td>{pedido.Prioridad}</td>
                         </tr>
-
                     ))}
                 </tbody>
-                <tfoot>
-
-                </tfoot>
             </table>
-
         </>
     )
 }
+
 export default Fila
