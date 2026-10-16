@@ -1,64 +1,29 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { GetPedidoPorId, GetPedidos, GetPedidosArea } from "./Funciones/Asincronas";
+
 import './style.css'
-const API = import.meta.env.VITE_API_URL
 
 function Fila() {
-    const [cargando, setCargando] = useState(true)
-    const [error, setError] = useState('')
-    const [pedidos, setPedidos] = useState([])
-    const [area, setArea] = useState('')
-
-    async function GetPedidosArea(Area){
-        setArea(Area)
-        setError('')
-        setPedidos([])
-        
-        if (!area) return;
-        try{
-            const respuesta = await fetch(
-                `${API}Pedidos/Area/${encodeURIComponent(area)}`
-            )
-            if(!respuesta.ok){
-                throw new Error("Error al consultar.")
-            }
-            const resultados = await respuesta.json()
-            console.log(resultados)
-            
-        }catch (error){
-            setError(error)
-        }finally{
-            setCargando(false)
-        }
-
-    }
-
-
-    useEffect(()=>{
-        fetch(`${API}Pedidos`)
-        .then(respuesta =>{
-            if(!respuesta.ok){
-                throw new Error("Algo fallo")
-            }
-            console.log(respuesta)
-            return respuesta.json()
-        })
-        .then(datos =>{
-            
-            setPedidos(datos.data)
-        })
-        .catch(error =>{
-            setError(error.message)
-        })
-        .finally(()=>{
-            setCargando(false)
-        })
-    }, [])
+    const [valor, setValor] = useState(Number)
 
     return (
         <>
+
             {cargando && <h1>Cargando Pedidos...</h1>}
             {error && <p>Error: {error}</p>}
+
+            <label htmlFor="Buscador">Buscar por ID</label>
+            <input 
+                type="text" 
+                id="Buscador" 
+                placeholder="ID"
+                onChange={(e) => setValor(e)}
+            />
+
+            <button onClick={() => GetPedidoPorId(valor)}>
+                Buscar
+            </button>
             <table>
                 <caption>
                     Tabla Clientes
