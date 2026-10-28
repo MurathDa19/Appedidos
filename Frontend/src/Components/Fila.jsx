@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GetPedidosId, GetPedidos, GetPedidosArea } from "./Funciones/Asincronas";
+import { GetPedidosId, GetPedidos, GetPedidosArea, GetPedidosEstado } from "./Funciones/Asincronas";
 
 import './style.css'
 
@@ -33,7 +33,10 @@ function Fila() {
         if (area === "---") cargar(GetPedidos)
         else cargar(() => GetPedidosArea(area))
     }
-
+    const handleEstado = (estado) => {
+        if (estado === "---") cargar(GetPedidos)
+        else cargar(() => GetPedidosEstado(estado))
+    }
     const handleBuscar = () => {
         if (valor.trim() === '') cargar(GetPedidos)
         else cargar(() => GetPedidosId(valor))
@@ -76,7 +79,20 @@ function Fila() {
                                 <option value="Facturación">Facturación</option>
                             </select>
                         </th>
-                        <th>Estado</th>
+                        <th>Estado                            
+                            <select
+                            id="selector"
+                            defaultValue="---"
+                            onChange={(e) => handleEstado(e.target.value)}
+                        >
+                            <option value="---">-----</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Entregado">Entregado</option>
+                            <option value="Facturado">Facturado</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                        </th>
                         <th>Ciudad</th>
                         <th>Fecha Pedido</th>
                         <th>Valor Total</th>
@@ -90,7 +106,10 @@ function Fila() {
                             <td>{pedido.Pedido}</td>
                             <td>{pedido.NitCliente}</td>
                             <td>{pedido.Area}</td>
-                            <td>{pedido.Estado}</td>
+                            <td><span className={`estado ${pedido.Estado.toLowerCase()}`}>
+                                {pedido.Estado}
+                            </span>
+                            </td>
                             <td>{pedido.Ciudad}</td>
                             <td>{pedido.FechaPedido}</td>
                             <td>{pedido.ValorTotal}</td>

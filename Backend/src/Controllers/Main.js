@@ -18,7 +18,6 @@ const GetPedidos = (req, res) => {
     res.json(datos)
 }
 
-
 /**
  * Endpoint para encontrar datos de un Pedido por su ID
  * @param {*} req 
@@ -29,17 +28,14 @@ const GetPedidoPorId = (req, res) => {
     const { id } = req.params;
     const Resp = datos.data.find(item => item.id === Number(id))
 
-    if (!Resp) {
-        return res.status(404).json({
-            message: "Usuario no encontrado."
-        })
+    if (!Resp) { 
+        return res.status(404).json({ message: "Usuario no encontrado." })
     }
     return res.status(200).json({
         data:[
             Resp
         ]
-    });
-};
+    })};
 
 /**
  * Endpoint para filtar pedidos por Area
@@ -64,6 +60,20 @@ const GetPedidosxArea = (req, res) => {
 
     });
 }
+const GetPedidoxEstado = (req, res) => {
+    const { Estado } = req.params
+    const Resp = datos.data.filter(
+        pedidos => pedidos.Estado === Estado
+    )
+    if (Resp.length === 0) {
+        return res.status(404).json({
+            message: "No se encontraron pedidos con este estado." + Estado
+        })
+    }
+    return res.status(200).json({
+        total_encontrado: Resp.length,
+        data: Resp
+    })
+}
 
-
-module.exports = { getHello, GetPedidos, GetPedidoPorId, GetPedidosxArea };
+module.exports = { getHello, GetPedidos, GetPedidoPorId, GetPedidosxArea, GetPedidoxEstado };

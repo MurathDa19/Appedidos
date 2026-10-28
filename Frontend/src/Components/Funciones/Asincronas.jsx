@@ -14,10 +14,16 @@ export async function GetPedidosId(Id) {
 export async function GetPedidosArea(Area) {
     if (!Area) return;
     const respuesta = await fetch(`${API}Pedidos/Area/${encodeURIComponent(Area)}`)
-    if (!respuesta.ok) { throw new Error("Error al consultar.") }
+    if (!respuesta.ok) { throw new Error("Error al consultar pedidos por Area.") }
     return await respuesta.json()
 }
 
+export async function GetPedidosEstado(Estado){
+    if(!Estado) return;
+    const respuesta = await fetch(`${API}Pedidos/Estado/${encodeURIComponent(Estado)}`)
+    if(!respuesta.ok){ throw new Error('Error al consultar pedidos por Estado.') }
+    return await respuesta.json()
+}
 
 
 
